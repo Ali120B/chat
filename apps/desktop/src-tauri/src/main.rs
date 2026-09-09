@@ -1,11 +1,11 @@
-use chat_app_core::create_profile;
+use chat_app_core::create_profile as create_local_profile;
 use chat_database::Database;
 use serde::Serialize;
 use std::{
-    path::PathBuf,
     sync::Mutex,
     time::{SystemTime, UNIX_EPOCH},
 };
+use tauri::Manager;
 
 struct AppDatabase(Mutex<Database>);
 #[derive(Serialize)]
@@ -35,19 +35,18 @@ fn create_profile(
     display_name: String,
     state: tauri::State<AppDatabase>,
 ) -> Result<(), String> {
-    create_profile(
-        &state.0.lock().map_err(|_| "database lock unavailable")?,
-        &username,
-        &display_name,
-        now_ms(),
-    )
-    .map_err(|e| e.to_string())
+    let database = state.0.lock().map_err(|_| "database lock unavailable")?;
+    create_local_profile(&database, &username, &display_name, now_ms()).map_err(|e| e.to_string())
 }
 fn main() {
-    let database_path = PathBuf::from("hearth.sqlite3");
-    let database = Database::open(database_path).expect("local database must open");
     tauri::Builder::default()
-        .manage(AppDatabase(Mutex::new(database)))
+        .setup(|app| {
+            let data_directory = app.path().app_local_data_dir()?;
+            std::fs::create_dir_all(&data_directory)?;
+            let database = Database::open(data_directory.join("hearth.sqlite3"))?;
+            app.manage(AppDatabase(Mutex::new(database)));
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![app_state, create_profile])
         .run(tauri::generate_context!())
         .expect("tauri application error");
