@@ -4,7 +4,9 @@ Hearth is a local-first, P2P-first desktop messenger. It is deliberately being b
 
 ## Current status
 
-**Phase 0 — foundation.** The repository now contains a runnable Tauri desktop shell, first-launch identity setup backed by local SQLite, a versioned ciphertext-only protocol envelope, and migration-backed persistence. The UI labels future capabilities instead of simulating them.
+**Phase 0 — foundation, complete.** The repository contains a runnable Tauri desktop shell, first-launch identity setup backed by local SQLite, a versioned ciphertext-only protocol envelope, and migration-backed persistence. Phases 1–6 are **not complete**: tray/OS integration, device key storage, coordination, P2P transport, authenticated encrypted DMs, and offline mailbox delivery have not yet been implemented.
+
+The desktop UI includes an explicit **Explore test mode** button on onboarding. It opens a disposable sample workspace so the home, messages, people, groups, and settings pages can be reviewed without creating an identity or contacting a server. Sample messages remain in the frontend process only and the UI labels unavailable product capabilities rather than presenting them as functional.
 
 ## Quick start
 
