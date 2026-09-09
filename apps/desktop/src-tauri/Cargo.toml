@@ -1,0 +1,14 @@
+[package]
+name = "chat-desktop"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[build-dependencies]
+tauri-build = { version = "2.5", features = [] }
+
+[dependencies]
+chat-app-core = { path = "../../../crates/app-core" }
+chat-database = { path = "../../../crates/database" }
+tauri = { version = "2.9", features = [] }
+serde = { workspace = true, features = ["derive"] }
