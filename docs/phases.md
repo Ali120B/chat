@@ -17,6 +17,20 @@ Each phase requires implementation, automated tests, failure behavior, documenta
 | 10 | Calls | stable 1:1 media only after messaging is proven |
 | 11–16 | Presence through release | ephemeral UX, security audit, network matrix, packaging, RC |
 
+## Verified roadmap status
+
+| Phase | Status | Evidence / remaining work |
+| --- | --- | --- |
+| 0 | Complete | Workspace, migrations, profile setup, protocol validation, and automated unit tests are present. |
+| 1 | Not started | No tray, notification, global-shortcut, always-on-top, or packaging implementation exists. |
+| 2 | Partial | A local profile exists, but device keys, secure OS key storage, and username registration do not. |
+| 3 | Not started | There is no Cloudflare Worker, D1 schema, Durable Object, R2 mailbox, or signaling service. |
+| 4 | Not started | There is no Iroh endpoint, peer authentication, relay fallback, reconnect worker, or transport diagnostics. |
+| 5 | Not started | The schema reserves ciphertext and pending outbound work, but no reviewed session protocol, message worker, acknowledgement, or retry implementation exists. |
+| 6 | Not started | There is no encrypted mailbox implementation or remote object-store integration. |
+
+The test-mode UI is a review aid, not acceptance evidence for any phase: it neither persists sample chats nor opens a network connection.
+
 ## Phase 0 delivered
 
 - Cargo workspace with explicit layering.

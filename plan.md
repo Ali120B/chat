@@ -1,6 +1,6 @@
 # P2P Desktop Chat — Engineering Plan
 
-> **Status:** Architecture baseline / implementation specification
+> **Status:** Phase 0 implementation baseline. Verified 2026-09-09: Phase 0 is complete; Phase 2 has local profile setup only; Phases 1 and 3–6 are not implemented. See `docs/phases.md` for the evidence-based status table.
 > **Target:** Windows + Linux, Arch Linux first
 > **Desktop:** Tauri 2 + Rust
 > **Architecture:** P2P-first, local-first, E2E encrypted, cloud-assisted only where necessary

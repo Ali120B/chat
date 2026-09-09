@@ -14,7 +14,7 @@ Hearth is **local-first + P2P-first + end-to-end encrypted + cloud-assisted**. â
 | Control plane | discovery, signaling, device metadata | No message plaintext |
 | Object mailbox | short-lived encrypted bundles/files | No |
 
-The first implementation intentionally exposes no connectivity, encryption, or delivery claims. It only persists the local onboarding profile.
+The first implementation intentionally exposes no connectivity, encryption, or delivery claims. It persists the local onboarding profile and includes a clearly labelled, disposable test-mode workspace for reviewing UI navigation. Test mode uses frontend-only sample content; it does not create identity material, persist messages, or contact a service.
 
 ## Dependency direction
 
